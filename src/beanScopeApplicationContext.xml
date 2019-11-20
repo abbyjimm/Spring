@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Define the dependency -->
+	<bean id="myCostume" class="com.code.springpractice.DaceCostumeService">
+	</bean>
+	
+    <!-- Define your beans here -->
+    <!-- Default scope "singleton". Spring container create only one instance
+     <bean id="myDancer" scope="singleton" class="com.code.springpractice.YoungDancer">
+     -->
+     <!-- Prototype scope, create a new instance for each container requests -->
+    <bean id="myDancer" scope="prototype" class="com.code.springpractice.YoungDancer">
+    	<!-- Set up the constructor injection -->
+    	<constructor-arg ref="myCostume"/>
+    </bean>
+</beans>
